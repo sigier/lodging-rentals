@@ -1,3 +1,5 @@
-export default (state={}, action) => {
+const authReducer = (state={}, action) => {
     return state;
-}
+};
+
+export default authReducer;

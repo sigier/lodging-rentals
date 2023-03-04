@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 
 
-const  NavBar = (props) =>{
+const  NavBar = () => {
     const {pathname} = useLocation();
     
     let navColor = pathname === '/' ? "transparent" : "black";

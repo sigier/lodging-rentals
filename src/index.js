@@ -15,11 +15,10 @@ const theStore = applyMiddleware(reduxPromise)(createStore)(rootReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={theStore}>
+    <Provider store={theStore}> 
       <BrowserRouter>
-        <App />
-      </BrowserRouter>
-     
+        <App />     
+      </BrowserRouter>        
     </Provider>
     
   </React.StrictMode>
