@@ -1,10 +1,10 @@
 import React from 'react';
-import './Navbar.css';
+import './NavBar.css';
 import { Link, useLocation } from 'react-router-dom';
 
 
 
-const  Navbar = (props) =>{
+const  NavBar = (props) =>{
     const {pathname} = useLocation();
     
     let navColor = pathname === '/' ? "transparent" : "black";
@@ -34,4 +34,4 @@ const  Navbar = (props) =>{
     
 
 
-export default Navbar;
+export default NavBar;
