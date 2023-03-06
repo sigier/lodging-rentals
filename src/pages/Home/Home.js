@@ -3,6 +3,7 @@ import './Home.css';
 import SearchBox from '../SearchBox/SearchBox';
 import api from '../../api/index';
 import Spinner from '../../utility/Spinner/Spinner';
+import City from '../../utility/City/City';
 
 const Home = () => {   
     
@@ -23,6 +24,17 @@ const Home = () => {
         return (<Spinner/>);
     }
 
+    const recommendedCities = cities.map((item, index)=>{
+    
+        return (
+            <div className='col s3'>
+                <City city={item} key={index}/>
+            </div>
+            
+        )
+    
+    });
+
     return(
            
     <div className='container-fluid'>
@@ -33,6 +45,7 @@ const Home = () => {
             </div>
 
         </div>
+        {recommendedCities}
     </div>
 
     </div>
