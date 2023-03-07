@@ -3,39 +3,48 @@ import './Home.css';
 import SearchBox from '../SearchBox/SearchBox';
 import api from '../../api/index';
 import Spinner from '../../utility/Spinner/Spinner';
-import City from '../../utility/City/City';
+ import Cities from '../../utility/City/Cities';
 
 const Home = () => {   
     
-    const [cities, setSities] = useState([])
+    const [cities, setCities] = useState([]);
+    const [asian, setAsianCities] = useState([]);
+    const [european, setEuropeanCities] = useState([]);
+    const [exotic, setExoticCities] = useState([]);
+
+
+    const promises = [
+        api.getRecommendedCities(),
+        api.getAsian(),
+        api.getEuropean(),
+        api.getExotic()
+    ]; 
     
 
     useEffect( () => {
+ 
 
-        api.getRecommendedCities().then((res)=>{
-            setSities(res.data);
+        Promise.all(promises).then(data =>{
+            setCities(data[0].data); 
+            setAsianCities(data[1].data);
+            setEuropeanCities(data[2].data);
+            setExoticCities(data[3].data);
         });
        
+   
 
     },[]);
 
-     
+    console.log(european)
+
     if (cities.length===0){
         return (<Spinner/>);
-    }
+    }     
 
-    const recommendedCities = cities.map((item, index)=>{
-    
-        return (
-            <div className='col s3'>
-                <City city={item} key={index}/>
-            </div>
-            
-        )
-    
-    });
 
-    return(
+    return(<>
+        
+        
            
     <div className='container-fluid'>
     <div className='row'>
@@ -43,13 +52,33 @@ const Home = () => {
             <div className='upper-fold'>
                <SearchBox/>
             </div>
+        </div>        
+    </div>
+
+    </div>
+
+    <div className='container-fluid lower-fold'>
+        <div className='row'>
+            <div className='col s12'>
+                <Cities cities={cities} header="Your recommendations"/>
+            </div>
+
+            <div className='col s12'>
+                <Cities cities={european.cities} header={european.header}/>
+            </div>
+
+            <div className='col s12'>
+                <Cities cities={asian.cities} header={asian.header}/>
+            </div>
+
+            <div className='col s12'>
+                <Cities cities={exotic.cities} header={exotic.header}/>
+            </div>
 
         </div>
-        {recommendedCities}
     </div>
 
-    </div>
-    );
+    </>);
 }  
 
 
