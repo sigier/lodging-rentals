@@ -13,16 +13,16 @@ const Home = () => {
     const [exotic, setExoticCities] = useState([]);
 
 
-    const promises = [
-        api.getRecommendedCities(),
-        api.getAsian(),
-        api.getEuropean(),
-        api.getExotic()
-    ]; 
+
     
 
     useEffect( () => {
- 
+        const promises = [
+            api.getRecommendedCities(),
+            api.getAsian(),
+            api.getEuropean(),
+            api.getExotic()
+        ]; 
 
         Promise.all(promises).then(data =>{
             setCities(data[0].data); 
@@ -35,8 +35,7 @@ const Home = () => {
 
     },[]);
 
-    console.log(european)
-
+ 
     if (cities.length===0){
         return (<Spinner/>);
     }     
