@@ -3,7 +3,8 @@ import './Home.css';
 import SearchBox from '../SearchBox/SearchBox';
 import api from '../../api/index';
 import Spinner from '../../utility/Spinner/Spinner';
- import Cities from '../../utility/City/Cities';
+import Cities from '../../utility/City/Cities';
+import Activities from '../../utility/Activity/Activities';
 
 const Home = () => {   
     
@@ -11,6 +12,7 @@ const Home = () => {
     const [asian, setAsianCities] = useState([]);
     const [european, setEuropeanCities] = useState([]);
     const [exotic, setExoticCities] = useState([]);
+    const [activities, setActivities] = useState([]);
 
 
 
@@ -21,7 +23,8 @@ const Home = () => {
             api.getRecommendedCities(),
             api.getAsian(),
             api.getEuropean(),
-            api.getExotic()
+            api.getExotic(),
+            api.getActivities()
         ]; 
 
         Promise.all(promises).then(data =>{
@@ -29,6 +32,7 @@ const Home = () => {
             setAsianCities(data[1].data);
             setEuropeanCities(data[2].data);
             setExoticCities(data[3].data);
+            setActivities(data[4].data);
         });
        
    
@@ -60,6 +64,10 @@ const Home = () => {
         <div className='row'>
             <div className='col s12'>
                 <Cities cities={cities} header="Your recommendations"/>
+            </div>
+
+            <div className='col s12'>
+                <Activities activities={activities} header="Your daily area"/>
             </div>
 
             <div className='col s12'>

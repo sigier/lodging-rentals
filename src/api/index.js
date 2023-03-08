@@ -15,6 +15,9 @@ const api =  {
 	},
 	getExotic(){
 		return  axios.get(`${endpoint}/cities/exotic`); 
+	},
+	getActivities() {
+		return  axios.get(`${endpoint}/activities/today`); 
 	}
 
 }
