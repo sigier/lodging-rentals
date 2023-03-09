@@ -18,6 +18,9 @@ const api =  {
 	},
 	getActivities() {
 		return  axios.get(`${endpoint}/activities/today`); 
+	},
+	getRecommendedVenues(){
+		return  axios.get(`${endpoint}/venues/recommended`); 
 	}
 
 }

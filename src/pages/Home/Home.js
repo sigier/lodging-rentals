@@ -5,6 +5,7 @@ import api from '../../api/index';
 import Spinner from '../../utility/Spinner/Spinner';
 import Cities from '../../utility/City/Cities';
 import Activities from '../../utility/Activity/Activities';
+import Venues from '../../utility/Venue/Venues';
 
 const Home = () => {   
     
@@ -13,6 +14,7 @@ const Home = () => {
     const [european, setEuropeanCities] = useState([]);
     const [exotic, setExoticCities] = useState([]);
     const [activities, setActivities] = useState([]);
+    const [venuesRecommended, setVenues] = useState([]);
 
 
 
@@ -24,7 +26,8 @@ const Home = () => {
             api.getAsian(),
             api.getEuropean(),
             api.getExotic(),
-            api.getActivities()
+            api.getActivities(),
+            api.getRecommendedVenues()
         ]; 
 
         Promise.all(promises).then(data =>{
@@ -33,6 +36,7 @@ const Home = () => {
             setEuropeanCities(data[2].data);
             setExoticCities(data[3].data);
             setActivities(data[4].data);
+            setVenues(data[5].data);
         });
        
    
@@ -72,6 +76,10 @@ const Home = () => {
 
             <div className='col s12'>
                 <Cities cities={european.cities} header={european.header}/>
+            </div>
+
+            <div className="col s12">
+                <Venues venues={venuesRecommended.venues} header={venuesRecommended.header} />
             </div>
 
             <div className='col s12'>
