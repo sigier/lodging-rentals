@@ -21,6 +21,12 @@ const api =  {
 	},
 	getRecommendedVenues(){
 		return  axios.get(`${endpoint}/venues/recommended`); 
+	},
+	getVenueById(id){
+		return  axios.get(`${endpoint}/venue/${id}`); 
+	},
+	getPoints(){
+		return  axios.get(`${endpoint}/points/get`)
 	}
 
 }
