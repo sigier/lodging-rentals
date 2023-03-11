@@ -4,12 +4,14 @@ import NavBar from './utility/NavBar/NavBar';
 import Home from './pages/Home/Home';
 import FullVenue from './pages/FullVenue/FullVenue';
 import { BrowserRouter } from 'react-router-dom';
+import Modal from './utility/Modal/Modal';
 
 
 
 const App = () => (
   <BrowserRouter>
      <NavBar/>
+     <Modal/>
      <Switch>
         <Route exact path="/" component={Home} ></Route>
         <Route exact path="/venue/:id" component={FullVenue}></Route>
