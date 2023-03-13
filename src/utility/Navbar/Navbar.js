@@ -27,8 +27,8 @@ const  NavBar = (props) => {
                                     <li><Link to="/">$ USD</Link></li>
                                     <li><Link to="/">Become a host</Link></li>
                                     <li><Link to="/">Help</Link></li>
-                                    <li onClick={()=>{props.openNavBarModal('open', <Signup/>)}}>Sign in </li>
-                                    <li onClick={()=>{props.openNavBarModal('open', <Login/>)}}>Log in </li>
+                                    <li className='login-signup' onClick={()=>{props.openNavBarModal('open', <Signup/>)}}>Sign in </li>
+                                    <li className='login-signup' onClick={()=>{props.openNavBarModal('open', <Login/>)}}>Log in </li>
                                 </ul>
                             </div>
                         </nav>

@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './Login.css';
 import SignUpInputs from './SignUpInputs';
+import { bindActionCreators } from 'redux';
+import openAModal from '../../actions/openAModal';
+import { connect } from 'react-redux';
+import Login from './Login';
 
-const Signup = () => {
+const Signup = (props) => {
 
     const signIt = () => {
         setLowerPart(<SignUpInputs changeEmail={changeEmail} changePassword={changePassword} />)
     }
-    const [lowerPart, setLowerPart] = useState(<button type='button' onClick={signIt} className="sign-up-button">Sign up with email</button> );
+    const [lowerPart, setLowerPart] = useState(<button type='button'   onClick={signIt} className="sign-up-button">Sign up with email</button> );
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
@@ -17,8 +21,7 @@ const Signup = () => {
     const submitLogin = (e) => {
         e.preventDefault();
 
-        console.log(email)
-    };
+     };
  
         
   
@@ -34,7 +37,8 @@ const Signup = () => {
                     </div>
                     {lowerPart}
                     <div className="divider"></div>
-                    <div>Already have an account? Log in</div>
+                    <div>Already have an account? <span className='pointer' onClick={()=>props.openAModal("open", <Login/>)}>Log in</span></div>
+
                 </form>
             </div>
 
@@ -42,5 +46,12 @@ const Signup = () => {
 
 };
 
+const mapDispatchToProps = (dispatcher) => {
+    return bindActionCreators({
+        openAModal: openAModal
+    }, dispatcher)
+};
 
-export default Signup;
+
+export default connect(null, mapDispatchToProps)(Signup);
+ 

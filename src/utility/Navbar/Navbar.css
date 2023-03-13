@@ -12,7 +12,10 @@
 .nav ul li{
     color: white;
     cursor: pointer;
-    margin: 5px;
+}
+
+.nav ul li.login-signup{
+     margin-right: 15px;
 }
 
 
