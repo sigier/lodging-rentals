@@ -26,7 +26,13 @@ const api =  {
 		return  axios.get(`${endpoint}/venue/${id}`); 
 	},
 	getPoints(){
-		return  axios.get(`${endpoint}/points/get`)
+		return  axios.get(`${endpoint}/points/get`);
+	},
+	signUp(data){
+		return  axios.post(`${endpoint}/user/signup`, data);
+	},
+	checkToken(data){
+		return  axios.post(`${endpoint}/user/token-check`, data);
 	}
 
 }
