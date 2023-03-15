@@ -3,6 +3,7 @@ import './Login.css';
 import SignUpInputs from './SignUpInputs';
 import { bindActionCreators } from 'redux';
 import openAModal from '../../actions/openAModal';
+import signAction from '../../actions/signAction';
 import { connect } from 'react-redux';
 import Login from './Login';
 import swal from 'sweetalert';
@@ -42,6 +43,7 @@ const Signup = (props) => {
                     title: "Success!",
                     icon: "success",
                   });
+                props.registerAction(data); 
                 break;    
         }
 
@@ -79,12 +81,19 @@ const Signup = (props) => {
 
 };
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    }
+};
+
 const mapDispatchToProps = (dispatcher) => {
     return bindActionCreators({
-        openAModal: openAModal
+        openAModal: openAModal,
+        registerAction: signAction
     }, dispatcher)
 };
 
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
  
