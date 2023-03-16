@@ -1,17 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './NavBar.css';
 import { Link, useLocation } from 'react-router-dom'; 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import openAModal from '../../actions/openAModal';
 import Login from '../../pages/Login/Login';
- import Signup from '../../pages/Login/Signup';
-
+import Signup from '../../pages/Login/Signup';
+import { useSelector, useDispatch } from 'react-redux';
 
 const  NavBar = (props) => {
     const {pathname} = useLocation();
     
     let navColor = pathname === '/' ? "transparent" : "black";
+  
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.auth.token);
+
+    useEffect(()=>{
+        dispatch(openAModal('closed',''));
+    },[token,dispatch]);
+ 
 
 
     return(
@@ -27,8 +35,19 @@ const  NavBar = (props) => {
                                     <li><Link to="/">$ USD</Link></li>
                                     <li><Link to="/">Become a host</Link></li>
                                     <li><Link to="/">Help</Link></li>
-                                    <li className='login-signup' onClick={()=>{props.openNavBarModal('open', <Signup/>)}}>Sign in </li>
-                                    <li className='login-signup' onClick={()=>{props.openNavBarModal('open', <Login/>)}}>Log in </li>
+                                    {props.auth.email ?
+                                    <>                                    
+                                    <li>Hello, {props.auth.email}</li>
+                                    <li>Logout</li>
+                                    </>
+
+                                    :
+                                    <>
+                                        <li className='login-signup' onClick={()=>{props.openNavBarModal('open', <Signup/>)}}>Sign in </li>
+                                        <li className='login-signup' onClick={()=>{props.openNavBarModal('open', <Login/>)}}>Log in </li>
+                                    </>
+                                    }
+                              
                                 </ul>
                             </div>
                         </nav>
@@ -38,6 +57,12 @@ const  NavBar = (props) => {
     );
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    }
+};
+
 const mapDispatchToProps = (dispatcher) => {
     return bindActionCreators({
         openNavBarModal: openAModal
@@ -45,4 +70,4 @@ const mapDispatchToProps = (dispatcher) => {
 };
 
 
-export default connect(null, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

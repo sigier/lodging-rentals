@@ -15,8 +15,8 @@ const Signup = (props) => {
         setLowerPart(<SignUpInputs changeEmail={changeEmail} changePassword={changePassword} />)
     }
     const [lowerPart, setLowerPart] = useState(<button type='button'   onClick={signIt} className="sign-up-button">Sign up with email</button> );
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const changeEmail = (e)=>setEmail(e.target.value);
     const changePassword = (e)=>setPassword(e.target.value);
@@ -44,7 +44,10 @@ const Signup = (props) => {
                     icon: "success",
                   });
                 props.registerAction(data); 
-                break;    
+                break;   
+            default:
+                break;
+ 
         }
 
     };
