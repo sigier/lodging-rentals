@@ -7,6 +7,7 @@ import openAModal from '../../actions/openAModal';
 import Login from '../../pages/Login/Login';
 import Signup from '../../pages/Login/Signup';
 import { useSelector, useDispatch } from 'react-redux';
+import logoutAction from '../../actions/logoutAction';
 
 const  NavBar = (props) => {
     const {pathname} = useLocation();
@@ -38,7 +39,7 @@ const  NavBar = (props) => {
                                     {props.auth.email ?
                                     <>                                    
                                     <li>Hello, {props.auth.email}</li>
-                                    <li>Logout</li>
+                                    <li onClick={()=>logOut()} >Logout</li>
                                     </>
 
                                     :
@@ -65,7 +66,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatcher) => {
     return bindActionCreators({
-        openNavBarModal: openAModal
+        openNavBarModal: openAModal,
+        logOut:logoutAction
     }, dispatcher)
 };
 
