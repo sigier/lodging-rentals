@@ -53,9 +53,7 @@ const Signup = (props) => {
     };
 
     const submitLogin = (e) => {
-        e.preventDefault();
-
-        
+        e.preventDefault();        
 
        api.signUp({email, password}).then(res=>handleTokenData(res.data));
 

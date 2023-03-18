@@ -29,9 +29,11 @@ const api =  {
 		return  axios.get(`${endpoint}/points/get`);
 	},
 	signUp(data){
-		console.log(data)
-		return  axios.post(`${endpoint}/users/signup`, data);
-	},
+ 		return  axios.post(`${endpoint}/users/signup`, data);
+	},	
+	logIn(data){
+		return  axios.post(`${endpoint}/users/login`, data);
+   	},
 	checkToken(data){
 		return  axios.post(`${endpoint}/users/token-check`, data);
 	}

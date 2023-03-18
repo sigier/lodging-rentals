@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import openAModal from '../../actions/openAModal';
 import { connect } from 'react-redux';
 import Signup from './Signup';
-
-
+import api from '../../api';
+import swal from 'sweetalert';
+import signAction from '../../actions/signAction';
 
 
 const Login = (props) => {
@@ -15,9 +16,42 @@ const Login = (props) => {
     const changeEmail = (e)=>setEmail(e.target.value);
     const changePassword = (e)=>setPassword(e.target.value);
 
+
+
+    const handleTokenData = (data) => {
+
+        switch(data.msg){
+            case "noEmail":
+                swal({
+                    title: "Email has to be provided!",
+                    icon: "error",
+                  })      
+                break;
+            case "badPass":
+                swal({
+                    title: "Invalid email/password",
+                    text: "Not found.",
+                    icon: "error",
+                  });
+                break;
+            case "loggedIn":
+                swal({
+                    title: "Success!",
+                    icon: "success",
+                  });
+                props.registerAction(data); 
+                break;   
+            default:
+                break;
+ 
+        }
+
+    };
+
+
     const submitLogin = (e) => {
         e.preventDefault();
-        console.log(password)
+        api.logIn({email, password}).then(res=>handleTokenData(res.data));
      };
  
 
@@ -42,7 +76,8 @@ const Login = (props) => {
 
 const mapDispatchToProps = (dispatcher) => {
     return bindActionCreators({
-        openAModal: openAModal
+        openAModal: openAModal,
+        registerAction: signAction
     }, dispatcher)
 };
 
