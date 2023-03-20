@@ -16,7 +16,7 @@ const CityVenue = (props) => {
             setHeader(res.data.header);
             setVenues(res.data.venues);
         });
-    },[]);
+    },[cityName]);
 
     if(!header){
         return <Spinner/>;
