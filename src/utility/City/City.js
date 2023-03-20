@@ -3,10 +3,10 @@ import './City.css';
 import { Link } from 'react-router-dom';
 
 const City = (props) => {
-    const {id, cityName, image, price } = props.city;
+    const {cityName, image, price } = props.city;
     return(
         <div className='city col s12'>
-            <Link to={`/city/${id}`}>
+            <Link to={`/city/${cityName}`}>
                 <div className='image'>
                     <img src={image} alt={cityName}></img>
                 </div>

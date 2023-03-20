@@ -36,6 +36,9 @@ const api =  {
    	},
 	checkToken(data){
 		return  axios.post(`${endpoint}/users/token-check`, data);
+	},
+	getCityVenue(cityName){
+		return  axios.get(`${endpoint}/venues/city/${cityName}`);
 	}
 
 }

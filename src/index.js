@@ -23,14 +23,14 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
  
 
-const theStore = applyMiddleware(reduxPromise)(createStore)(rootReducer);
+const theStore = applyMiddleware(reduxPromise)(createStore)(persistedReducer);
 const persistor = persistStore(theStore);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={theStore}> 
-      <PersistGate loading={Spinner} persistor={persistor}>
+      <PersistGate loading={<Spinner/>} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>

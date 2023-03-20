@@ -9,6 +9,7 @@ import Signup from '../../pages/Login/Signup';
 import { useSelector, useDispatch } from 'react-redux';
 import logoutAction from '../../actions/logoutAction';
 
+
 const  NavBar = (props) => {
     const {pathname} = useLocation();
     
@@ -39,7 +40,7 @@ const  NavBar = (props) => {
                                     {props.auth.email ?
                                     <>                                    
                                     <li>Hello, {props.auth.email}</li>
-                                    <li onClick={()=>logOut()} >Logout</li>
+                                    <li onClick={()=>props.logOut()} >Logout</li>
                                     </>
 
                                     :
