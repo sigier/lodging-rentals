@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import api from '../../api';
 import './FullVenue.css';
 import Point from './Point';
+import { connect } from 'react-redux';
+import openAModal from '../../actions/openAModal';
+import { bindActionCreators } from 'redux';
+import Login from '../Login/Login';
 
 
 const FullVenue = (props) => {
@@ -75,7 +79,11 @@ const FullVenue = (props) => {
                     </div>
 
                     <div className='col s12'>
-                        <button onClick={reserveNow} className='btn red accent-2'>Reserve</button>
+                        { props.auth.token ?                            
+                          <button onClick={reserveNow} className='btn red accent-2'>Reserve</button> :
+                          <div>Please,  <span className='text-link' onClick={()=>{props.openNavBarModal('open', <Login/>)}}>Log in </span>
+                          for reservation</div>  
+                        }   
                     </div>
                 </div>
             </div>
@@ -84,4 +92,18 @@ const FullVenue = (props) => {
 
 }
 
-export default FullVenue;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        showModal: openAModal
+    },dispatch);
+};
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FullVenue);

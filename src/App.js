@@ -6,6 +6,7 @@ import  Home from './pages/Home/Home';
 import Modal from './utility/Modal/Modal';
 import Spinner from './utility/Spinner/Spinner';
 import CityVenue from './utility/CityVenues/CityVenue';
+import './App.css';
 
 const FullVenue  = lazy(() => import('./pages/FullVenue/FullVenue'));
 
