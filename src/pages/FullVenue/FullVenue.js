@@ -6,12 +6,21 @@ import { connect } from 'react-redux';
 import openAModal from '../../actions/openAModal';
 import { bindActionCreators } from 'redux';
 import Login from '../Login/Login';
+import moment from 'moment';
+import swal from 'sweetalert';
 
 
 const FullVenue = (props) => {
 
     const [fullVenue, setFullVenue] = useState({});
     const [points, setPoints] = useState([]);
+    
+    const [numberOfGuests, setNumberOfGuests] = useState(1);
+    const [checkIn, setCheckIn] = useState('');
+    const [checkOut, setCheckOut] = useState('');
+
+
+
     const id = props.match.params.id;
 
     useEffect(()=>{ 
@@ -31,8 +40,31 @@ const FullVenue = (props) => {
 
     },[id]);
 
-    const reserveNow = (e) => {
+    changeNumberOfGuests = (e)=>{this.setState({numberOfGuests: e.target.value})}
+    changeCheckIn = (e)=>{this.setState({checkIn: e.target.value})}
+    changeCheckOut = (e)=>{this.setState({checkOut: e.target.value})}
 
+    const reserveNow = (e) => {
+        const startDayMoment = moment(checkIn);
+        const endDayMoment = moment(checkOut);
+        const diffDays = endDayMoment.diff(startDayMoment,"days");
+
+          
+
+        if(diffDays < 1){
+            swal({
+                title: "Put check-out before check-in date!",
+                icon:"error"
+            });
+        }else if(isNaN(diffDays) || diffDays===0){
+            swal({
+                title: "Select valid dates!",
+                icon:"error"
+            });
+        }else{
+            const priceNight = fullVenue.priceNight;
+            const total = priceNight*diffDays;
+        }
     }
     
 
