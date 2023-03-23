@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import Login from '../Login/Login';
 import moment from 'moment';
 import swal from 'sweetalert';
-
+import stripeLoader from '../../Stripe/scriptLoader';
 
 const FullVenue = (props) => {
 
@@ -64,6 +64,8 @@ const FullVenue = (props) => {
         }else{
             const priceNight = fullVenue.priceNight;
             const total = priceNight*diffDays;
+            stripeLoader.then();
+
         }
     }
     
