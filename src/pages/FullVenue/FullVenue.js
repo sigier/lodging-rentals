@@ -66,6 +66,26 @@ const FullVenue = (props) => {
             const total = priceNight*diffDays;
             stripeLoader.then();
 
+            const data  = {
+                venueData: fullVenue,
+                totalPrice: total,
+                diffDays,
+                pricePerNight: priceNight,
+                checkIn,
+                checkOut,
+                token: props.auth.token,
+                numberOfGuests: numberOfGuests,
+                currency: 'USD',
+            };
+            const stripeKey = process.env.REACT_APP_STRIPE_KEY;
+            const stripe = window.Stripe(stripeKey);
+            const sessionItem = api.createStripeSession(data).then();
+            stripe.redirectToCheckout({
+                sessionId: sessionItem.data.id,
+            }).then((result)=>{
+                console.log(result);
+            });
+
         }
     }
     

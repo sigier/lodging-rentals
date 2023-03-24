@@ -39,6 +39,9 @@ const api =  {
 	},
 	getCityVenue(cityName){
 		return  axios.get(`${endpoint}/venues/city/${cityName}`);
+	},
+	createStripeSession(data){
+		return  axios.post(`${endpoint}/payment/create-session`, data);
 	}
 
 }
