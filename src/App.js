@@ -7,6 +7,7 @@ import Modal from './utility/Modal/Modal';
 import Spinner from './utility/Spinner/Spinner';
 import CityVenue from './utility/CityVenues/CityVenue';
 import './App.css';
+import PaymentSuccess from './pages/Payment/Success';
 
 const FullVenue  = lazy(() => import('./pages/FullVenue/FullVenue'));
 
@@ -20,6 +21,8 @@ const App = () => (
         <Route exact path="/" component={Home} ></Route>
         <Route exact path="/venue/:id" component={FullVenue}></Route>
         <Route exact path="/city/:cityName" component={CityVenue} ></Route>
+        <Route exact path="/payment-success/:stripeToken" component={PaymentSuccess} />
+
       </Switch>
     </Suspense>
   </BrowserRouter>

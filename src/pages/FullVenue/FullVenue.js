@@ -40,9 +40,9 @@ const FullVenue = (props) => {
 
     },[id]);
 
-    changeNumberOfGuests = (e)=>{this.setState({numberOfGuests: e.target.value})}
-    changeCheckIn = (e)=>{this.setState({checkIn: e.target.value})}
-    changeCheckOut = (e)=>{this.setState({checkOut: e.target.value})}
+    const changeNumberOfGuests = (e)=>{setNumberOfGuests( e.target.value)};
+    const changeCheckIn = (e)=>{setCheckIn( e.target.value)};
+    const changeCheckOut = (e)=>{setCheckOut( e.target.value)};
 
     const reserveNow = (e) => {
         const startDayMoment = moment(checkIn);
@@ -114,16 +114,16 @@ const FullVenue = (props) => {
 
                     <div className='col s6'>
                         Check-In
-                        <input type='date'/>
+                        <input type='date' onChange={changeCheckIn} value={checkIn}/>
                     </div>
 
                     <div className='col s6'>
                         Check-Out
-                        <input type='date'/>
+                        <input type='date' onChange={changeCheckOut} value={checkOut} />
                     </div>
 
                     <div className='col s12'>
-                        <select className='browser-default' type='date'>
+                        <select className='browser-default' onChange={changeNumberOfGuests } value={numberOfGuests}  >
                             <option value='1'> 1 Guest</option>
                             <option value='2'> 2 Guests</option>
                             <option value='3'> 3 Guests</option>
