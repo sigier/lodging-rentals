@@ -42,7 +42,10 @@ const api =  {
 	},
 	createStripeSession(data){
 		return  axios.post(`${endpoint}/payment/create-session`, data);
-	}
+	},
+	completePayment(data){
+		return  axios.post(`${endpoint}/payment/success`, data);
+	},
 
 }
 
