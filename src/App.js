@@ -22,6 +22,7 @@ const App = () => (
         <Route exact path="/venue/:id" component={FullVenue}></Route>
         <Route exact path="/city/:cityName" component={CityVenue} ></Route>
         <Route exact path="/payment-success/:stripeToken" component={PaymentSuccess} />
+        <Route path="/account" component={Account} />
 
       </Switch>
     </Suspense>
