@@ -46,6 +46,9 @@ const api =  {
 	completePayment(data){
 		return  axios.post(`${endpoint}/payment/success`, data);
 	},
+	getBookings(data){
+		return  axios.post(`${endpoint}/users/getBookings`, data);
+	},
 
 }
 
