@@ -49,6 +49,9 @@ const api =  {
 	getBookings(data){
 		return  axios.post(`${endpoint}/users/getBookings`, data);
 	},
+	cancelBooking(data){
+		return  axios.post(`${endpoint}/reservation/cancel`, data);
+	}
 
 }
 

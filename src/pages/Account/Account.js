@@ -52,7 +52,7 @@ const Account = (props) =>{
                         <h1>Choose component</h1>
                     }/>
                     <Route exact path="/account/reservations/confirmed">
-                        <Booking type="upcoming" bookings={futureBookings}/>
+                        <Booking type="upcoming" bookings={futureBookings} token={props.auth.token}/>
                     </Route>
                     <Route exact path="/account/reservations/past">
                         <Booking type="past" bookings={pastBookings}/>
