@@ -7,7 +7,7 @@ import Cities from '../../utility/City/Cities';
 import Activities from '../../utility/Activity/Activities';
 import Venues from '../../utility/Venue/Venues';
 
-const Home = () => {   
+const Home = (props) => {   
     
     const [cities, setCities] = useState([]);
     const [asian, setAsianCities] = useState([]);
@@ -57,7 +57,7 @@ const Home = () => {
     <div className='row'>
         <div className='home col s12'>
             <div className='upper-fold'>
-               <SearchBox/>
+               <SearchBox history={props.history}/>
             </div>
         </div>        
     </div>

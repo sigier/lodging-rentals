@@ -8,6 +8,7 @@ import Spinner from './utility/Spinner/Spinner';
 import CityVenue from './utility/CityVenues/CityVenue';
 import './App.css';
 import PaymentSuccess from './pages/Payment/Success';
+import Search from './pages/Search/Search';
 
 const FullVenue  = lazy(() => import('./pages/FullVenue/FullVenue'));
 
@@ -23,6 +24,7 @@ const App = () => (
         <Route exact path="/city/:cityName" component={CityVenue} ></Route>
         <Route exact path="/payment-success/:stripeToken" component={PaymentSuccess} />
         <Route path="/account" component={Account} />
+        <Route path="/search/:searchText" component={Search} />
 
       </Switch>
     </Suspense>

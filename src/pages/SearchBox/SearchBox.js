@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchBox.css';
 import { useState } from 'react';
 
-const SearchBox = () => {
+const SearchBox = (props) => {
 
  const {location, setLocation} = useState('');
  const {inCheck, setInCheck} = useState('');
@@ -26,11 +26,16 @@ const changeGuest = (e) => {
     setGuest(e.target.value);
 }
 
+const search = (e) => {
+    e.preventDefault();
+    props.history.push(`search/${location}`)
+}
+
 return(
     <div className="home-search-box col m4">
     <h1>Book unique places with us</h1>
     
-    <form className="search-box-form">
+    <form onSubmit={search} className="search-box-form">
         <div className="col m12">
             <div className="form-label">Where</div>
             <div className="input-field" id="where">
