@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Account.css';
 import { Link } from 'react-router-dom'
 
-const AccountSidebar =(props)=>{
+const AccountSidebar =()=>{
     return(
         <ul className="sidenav sidenav-fixed">
         <li>
             <div className="user-view valign-wrapper center-align">
-                <img className="" src="https://airbnb-clone-prexel-images.s3.amazonaws.com/genericAvatar.png" />
+                <img alt='img' src="https://airbnb-clone-prexel-images.s3.amazonaws.com/genericAvatar.png" />
             </div>
         </li>
         <li>

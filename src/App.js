@@ -9,6 +9,7 @@ import CityVenue from './utility/CityVenues/CityVenue';
 import './App.css';
 import PaymentSuccess from './pages/Payment/Success';
 import Search from './pages/Search/Search';
+import Account from './pages/Account/Account';
 
 const FullVenue  = lazy(() => import('./pages/FullVenue/FullVenue'));
 

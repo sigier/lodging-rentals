@@ -100,7 +100,7 @@ const FullVenue = (props) => {
                 <div className='col s8 left-details'>
                     <div className='location'>{fullVenue.location}</div>
                     <div className='title'>{fullVenue.title}</div>
-                    <div className='guests'>{fullVenue.guests}</div>
+                    <div className='guests'>Max  guests: {fullVenue.guests}</div>
 
                     <div className='divider'></div>
                     {points}

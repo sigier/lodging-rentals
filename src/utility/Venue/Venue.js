@@ -12,10 +12,10 @@ const Venue = (props) => {
                     <img src={imageUrl} alt={location}/>
                 </div>
                 <div className="location-stars">
-                    <span className="location">{location}</span>
+                    <span className="location">{location.charAt(0).toUpperCase()+location.substring(1) }</span>
                     <span className="rating right"><i className="material-icons">star</i>{rating}</span>
                 </div>
-                <div className="title">${title}</div>
+                <div className="title">{title}</div>
                 <div className="price-per-night">${pricePerNight}/night</div>
                 
             </Link>

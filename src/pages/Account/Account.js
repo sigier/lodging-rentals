@@ -35,7 +35,7 @@ const Account = (props) =>{
                 }
             });
 
-            setPastBookings(pas);
+            setPastBookings(past);
             setFutureBookings(future)
         });
  
